@@ -1,5 +1,57 @@
-$bg: #ff0;
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap');
 
-body{
-    background-color: $bg;
+
+$blue: #2A398C;
+$yelow: #FABC04;
+$red: #E62238;
+$wh: #fff;
+
+
+html
+{
+    font-size: 10px;
+}
+
+body
+{
+    font-family: Merriweather;
+    position: relative;
+    color: $wh;
+    background-color: $wh;
+    opacity: 0.8;
+}
+
+.container
+{
+    max-width: 1140px;
+    margin: 0 auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    position: relative;
+    z-index: 0;
+    background-color: #2A398C;
+}
+.flex
+{
+    display: flex;
+    justify-content: center;
+}
+.header
+{
+    background-color: $blue;
+    margin: 0 auto;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 2;
+ 
+    &__sdr
+    {
+        align-self: center;
+        text-transform: uppercase;
+        font-size: 40px;
+        font-weight: 700;
+    }
 }
