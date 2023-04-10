@@ -9,11 +9,90 @@
 <body>
     <header class="header">
         <div class="container">
-            <div class="flex"><h1 class="header__sdr">С Днем Рождения!!!</h1></div>
+            <div class="flex">
+                <h1 class="header__sdr">С Днем Рождения!!!</h1>
+            </div>
         </div>
     </header>
-    <div class="container">
-        
+    <div class="mt">
+        <div class="container-but">
+            <div class="flex-but">
+                <a class="but scroll" href="#txt">
+                    <span class="but-line but-top"></span>
+                    <span class="but-line but-bot"></span>
+                    <span class="but-line but-right"></span>
+                    <span class="but-line but-left"></span>
+                    Жми
+                </a>
+            </div>
+            <div id="txt" class="flex-text">
+                <p class="text text-center element-animation">В этот прекрасный праздник я от всей души желаю тебе</p>
+                <p class="text text-right element-animation">Здоровья</p>
+                <p class="text text-left element-animation">Любви</p>
+                <p class="text text-right element-animation">Счастья</p>
+                <p class="text text-left element-animation">Благополучия</p>
+                <p class="text text-right element-animation">Удачи</p>
+                <p class="text text-left element-animation">Успеха</p>
+                <p class="text text-right element-animation">Денежного изобилия</p>
+                <a class="text text-center element-animation text-but" href="#">Ну и сюда можешь нажать по приколу</a>
+            </div>
+        </div>
     </div>
+    <script type="text/javascript">
+        const links = document.querySelectorAll(".scroll");
+
+        for (const link of links) 
+        {
+            link.addEventListener("click", clickHandler);
+        }
+
+        function clickHandler(e) 
+        {
+            e.preventDefault();
+            const href = this.getAttribute("href");
+
+            document.querySelector(href).scrollIntoView({behavior: "smooth"});
+        }
+        function openModal() 
+        {
+            document.getElementById("modal").style.top = "63px";
+        }
+    
+        function closeModal() 
+        {
+            document.getElementById("modal").style.top = "-460px";
+        }
+        function openModall() 
+        {
+            document.getElementById("modal2").style.top = "0px";
+        }
+    
+        function closeModall() 
+        {
+            document.getElementById("modal2").style.top = "-460px";
+        }
+        function onEntry(entry) {
+            entry.forEach(change => {
+              if (change.isIntersecting) 
+            {
+               change.target.classList.add('element-show');
+            }
+               else
+            {
+               change.target.classList.remove('element-show');
+            }
+              
+            });
+          }
+          
+          let options = {
+            threshold: [0.5] };
+          let observer = new IntersectionObserver(onEntry, options);
+          let elements = document.querySelectorAll('.element-animation');
+          
+          for (let elm of elements) {
+            observer.observe(elm);
+          }
+    </script>  
 </body>
 </html>

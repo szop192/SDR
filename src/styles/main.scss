@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap');
 
 
-$blue: #2A398C;
-$yelow: #FABC04;
+$blue: #4B5AAF;
+$yelow: #FFD65D;
 $red: #E62238;
 $wh: #fff;
 
@@ -18,7 +18,6 @@ body
     position: relative;
     color: $wh;
     background-color: $wh;
-    opacity: 0.8;
 }
 
 .container
@@ -29,19 +28,24 @@ body
     padding-right: 15px;
     position: relative;
     z-index: 0;
-    background-color: #2A398C;
+}
+.mt
+{
+    margin-top: 140px;
 }
 .flex
 {
     display: flex;
     justify-content: center;
 }
+
+
 .header
 {
-    background-color: $blue;
+    background-color: #404D98;
     margin: 0 auto;
-    padding-top: 4rem;
-    padding-bottom: 4rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
     position: fixed;
     width: 100%;
     top: 0;
@@ -53,5 +57,159 @@ body
         text-transform: uppercase;
         font-size: 40px;
         font-weight: 700;
+        color: $wh;
+        letter-spacing: 5px;
     }
+}
+.container-but
+{
+    max-width: 1140px;
+    margin: 0 auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    position: relative;
+    z-index: 0;
+    background: linear-gradient(180deg, #404D98 0%, #8D9EFF 100%);
+    height: 5000px;
+}
+.flex-but
+{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 250px;
+    padding-top: 250px;
+}
+.but
+{
+    text-decoration: none;
+    color: $wh;
+    text-transform: uppercase;  
+    padding: 10px 150px;
+    font-size: 40px;
+    display: inline-block;
+    font-weight: 700;
+    transition: 0.2s;
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 5px;
+    &:hover
+    {
+        box-shadow: 0 0 10px $wh, 0 0 40px $wh, 0 0 80px $wh;
+        background-color: $wh;
+        color: #8D9EFF;
+        transition-delay: 0.75s;
+    }
+}
+.but-line
+{
+    position: absolute;
+    display: block;
+}
+.but-top
+{
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, $wh);
+}
+.but:hover .but-top 
+{
+    left: 100%;
+    transition: 1s;
+    transition-delay: 0.25s;
+}
+.but-bot
+{
+    bottom: 0;
+    right: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(280deg, transparent, $wh);
+}
+.but:hover .but-bot 
+{
+    right: 100%;
+    transition: 1s;
+    transition-delay: 0.25s;
+}
+.but-left
+{
+    bottom: -100%;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(0deg, transparent, $wh);
+}
+.but:hover .but-left
+{
+    bottom: 100%;
+    transition: 1s;
+    transition-delay: 0.25s;
+}
+.but-right
+{
+    top: -100%;
+    right: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(180deg, transparent, $wh);
+}
+.but:hover .but-right
+{
+    top: 100%;
+    transition: 1s;
+    transition-delay: 0.25s;
+}
+.flex-text
+{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 250px;
+    padding-top: 150px;
+    margin-top: 250px;
+    flex-direction: column;
+}
+.text
+{
+    font-size: 32px;
+    font-weight: 400;
+    padding: 60px;
+}
+.text-center
+{
+    align-self: center;
+    transform:translateY(100px);
+}
+.text-right
+{
+    align-self: end;
+    transform:translateX(100px);
+}
+.text-left
+{
+    transform:translateX(-100px);
+}
+.text-but
+{
+    text-decoration: none;
+    color: $wh;
+    transform: scale(0.9);
+    transition: 0.3s;
+    &:hover
+    {
+        transform: scale(1.1);
+    }
+}
+.element-animation
+{
+    opacity: 0;
+    transition: 2s;
+}
+.element-show
+{
+    opacity: 1;
+    transform:translateX(0px);
+    transform:translateY(0px);
+    transform:translateZ(0px);
 }
