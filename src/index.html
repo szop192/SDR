@@ -34,11 +34,98 @@
                 <p class="text text-right element-animation">Удачи</p>
                 <p class="text text-left element-animation">Успеха</p>
                 <p class="text text-right element-animation">Денежного изобилия</p>
-                <a class="text text-center element-animation text-but" href="#">Ну и сюда можешь нажать по приколу</a>
+                <a class="text text-center element-animation text-but scroll" href="#player">Ну и сюда можешь нажать по приколу</a>
+            </div>
+            <div id="player" class="flex ">
+                <div class="audio-player">
+                    <audio>
+                        <source src="./media/1.mp3">
+                        <source src="./media/2.ogg">
+                    </audio>
+                    <div class="controls ">
+                      <button class="player-button element-animation">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="#fff">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
+                        </svg>
+                      </button> 
+                  </div>
             </div>
         </div>
+        <img class="img img-1 element-animation" src="./img/1.jpg" alt="">
+        <img class="img img-2 element-animation" src="./img/2.jpg" alt="">
+        <img class="img img-3 element-animation" src="./img/3.jpg" alt="">
+        <img class="img img-4 element-animation" src="./img/4.jpg" alt="">
+        <img class="img img-5 element-animation" src="./img/6.jpg" alt="">
+        
     </div>
     <script type="text/javascript">
+        function onEntry(entry) {
+            entry.forEach(change => {
+              if (change.isIntersecting) 
+            {
+               change.target.classList.add('element-show');
+            }
+               else
+            {
+               change.target.classList.remove('element-show');
+            }
+              
+            });
+          }
+          
+          let options = {
+            threshold: [0.5] };
+          let observer = new IntersectionObserver(onEntry, options);
+          let elements = document.querySelectorAll('.element-animation');
+          
+          for (let elm of elements) {
+            observer.observe(elm);
+          }
+        const playerButton = document.querySelector('.player-button'),
+        audio = document.querySelector('audio'),
+        playIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="#fff">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" /></svg>`,
+        pauseIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="#fff">
+            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" /></svg>`
+
+        function toggleAudio () 
+        {
+            if (audio.paused) 
+            {
+                audio.play();
+                playerButton.innerHTML = pauseIcon;
+            } 
+            else 
+            {
+                audio.pause();
+                playerButton.innerHTML = playIcon;
+            }
+        }
+
+        playerButton.addEventListener('click', toggleAudio);
+
+        audio.ontimeupdate = changeTimelinePosition;
+
+        function audioEnded () 
+        {
+            playerButton.innerHTML = playIcon;
+        }
+
+        audio.onended = audioEnded;
+
+        function changeSeek () 
+        {
+            const time = (timeline.value * audio.duration) / 100;
+            audio.currentTime = time;
+        }
+
+        function toggleSound () 
+        {
+            audio.muted = !audio.muted;
+            soundButton.innerHTML = audio.muted ? muteIcon : soundIcon;
+        }
+        soundButton.addEventListener('click', toggleSound);
+
         const links = document.querySelectorAll(".scroll");
 
         for (const link of links) 
@@ -71,28 +158,7 @@
         {
             document.getElementById("modal2").style.top = "-460px";
         }
-        function onEntry(entry) {
-            entry.forEach(change => {
-              if (change.isIntersecting) 
-            {
-               change.target.classList.add('element-show');
-            }
-               else
-            {
-               change.target.classList.remove('element-show');
-            }
-              
-            });
-          }
-          
-          let options = {
-            threshold: [0.5] };
-          let observer = new IntersectionObserver(onEntry, options);
-          let elements = document.querySelectorAll('.element-animation');
-          
-          for (let elm of elements) {
-            observer.observe(elm);
-          }
+        
     </script>  
 </body>
 </html>
